@@ -20,6 +20,25 @@ namespace Platformer.Mechanics
         //conveniently configured inside the inspector.
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
+        DialogManager dialogManager;
+        Dialog.Callback dialogCallback;
+
+        private void Awake()
+        {
+            dialogManager = DialogManager.Instance;
+        }
+
+        void Start() {
+            dialogCallback = this.DialogCallback;
+            SystemDialog dialog = dialogManager.CallSystemDialog("My Title", "Hello World!", SystemDialog.AppearanceType.Default, dialogCallback);
+            dialogManager.CallSystemDialog("My Title 2", "Hello World 2!", SystemDialog.AppearanceType.Default, dialogCallback);
+        }
+
+        private void DialogCallback(Dialog dialog = null, int result = 0)
+        {
+            Debug.Log("DialogManager Result:" + result);
+        }
+
         void OnEnable()
         {
             Instance = this;
