@@ -77,7 +77,6 @@ namespace Platformer.Mechanics
 
         public void Jump(bool buttonDown, bool buttonUp)
         {
-            Debug.Log("Jump!! " + buttonDown);
             if (jumpState == JumpState.Grounded && buttonDown)
                 jumpState = JumpState.PrepareToJump;
             else if (buttonUp)
@@ -89,7 +88,6 @@ namespace Platformer.Mechanics
 
         public void JumpTouch(bool buttonDown)
         {
-            Debug.Log("Jump!! " + buttonDown);
             if (jumpState == JumpState.Grounded && buttonDown)
                 jumpState = JumpState.PrepareToJump;
             else if (!buttonDown)
