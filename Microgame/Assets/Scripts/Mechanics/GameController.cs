@@ -21,16 +21,20 @@ namespace Platformer.Mechanics
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         DialogManager dialog;
+        AdMobController adMobController;
+        FirebaseAnalyticsManager firebaseAnalytics;
         Dialog.Callback dialogCallback;
 
         private void Awake()
         {
             dialog = DialogManager.Instance;
+            adMobController = AdMobController.Instance;
+            firebaseAnalytics = FirebaseAnalyticsManager.Instance;
         }
 
         void Start() {
             dialogCallback = this.DialogCallback;
-            //SystemDialog dialog = dialogManager.CallSystemDialog("My Title", "Hello World!", SystemDialog.AppearanceType.Default, dialogCallback);
+            //dialog.CallSystemDialog("My Title", "Hello World!", SystemDialog.AppearanceType.Default, dialogCallback);
         }
 
         private void DialogCallback(Dialog dialog = null, int result = 0)

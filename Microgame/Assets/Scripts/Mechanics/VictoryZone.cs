@@ -9,6 +9,21 @@ namespace Platformer.Mechanics
     /// </summary>
     public class VictoryZone : MonoBehaviour
     {
+        DialogManager dialog;
+        AdMobController adMobController;
+        FirebaseAnalyticsManager firebaseAnalytics;
+        Dialog.Callback dialogCallback;
+
+        private void Awake()
+        {
+            dialog = DialogManager.Instance;
+            adMobController = AdMobController.Instance;
+            firebaseAnalytics = FirebaseAnalyticsManager.Instance;
+        }
+        void Start()
+        {
+            dialogCallback = this.DialogCallback;
+        }
         void OnTriggerEnter2D(Collider2D collider)
         {
             var p = collider.gameObject.GetComponent<PlayerController>();
@@ -17,6 +32,15 @@ namespace Platformer.Mechanics
                 var ev = Schedule<PlayerEnteredVictoryZone>();
                 ev.victoryZone = this;
             }
+
+            firebaseAnalytics.AnalyticsLevelComplete();
+            dialog.CallSystemDialog("Congratulations!", "Successfully tracked Level Complete event", SystemDialog.AppearanceType.Default, dialogCallback);
         }
+        //Callback on button OK
+        private void DialogCallback(Dialog dialog = null, int result = 0)
+        {
+            adMobController.ShowInterstitialAd();
+        }
+
     }
 }
