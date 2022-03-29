@@ -20,6 +20,28 @@ namespace Platformer.Mechanics
         //conveniently configured inside the inspector.
         public PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
+        DialogManager dialog;
+        AdMobController adMobController;
+        FirebaseAnalyticsManager firebaseAnalytics;
+        Dialog.Callback dialogCallback;
+
+        private void Awake()
+        {
+            dialog = DialogManager.Instance;
+            adMobController = AdMobController.Instance;
+            firebaseAnalytics = FirebaseAnalyticsManager.Instance;
+        }
+
+        void Start() {
+            dialogCallback = this.DialogCallback;
+            //dialog.CallSystemDialog("My Title", "Hello World!", SystemDialog.AppearanceType.Default, dialogCallback);
+        }
+
+        private void DialogCallback(Dialog dialog = null, int result = 0)
+        {
+            Debug.Log("DialogManager Result:" + result);
+        }
+
         void OnEnable()
         {
             Instance = this;

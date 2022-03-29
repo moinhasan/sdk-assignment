@@ -33,6 +33,7 @@ namespace Platformer.Mechanics
         /*internal new*/ public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
+        public bool touchControlEnabled = true;
 
         bool jump;
         Vector2 move;
@@ -55,21 +56,45 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
-                move.x = Input.GetAxis("Horizontal");
-                if (jumpState == JumpState.Grounded && Input.GetButtonDown("Jump"))
-                    jumpState = JumpState.PrepareToJump;
-                else if (Input.GetButtonUp("Jump"))
-                {
-                    stopJump = true;
-                    Schedule<PlayerStopJump>().player = this;
-                }
+#if UNITY_EDITOR && !UNITY_ANDROID
+                touchControlEnabled = false;
+                Move(Input.GetAxis("Horizontal"));
+                Jump(Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));
+#endif
             }
             else
             {
-                move.x = 0;
+                Move(0);
             }
             UpdateJumpState();
             base.Update();
+        }
+
+        public void Move(float moveInput)
+        {
+            move.x = moveInput;
+        }
+
+        public void Jump(bool buttonDown, bool buttonUp)
+        {
+            if (jumpState == JumpState.Grounded && buttonDown)
+                jumpState = JumpState.PrepareToJump;
+            else if (buttonUp)
+            {
+                stopJump = true;
+                Schedule<PlayerStopJump>().player = this;
+            }
+        }
+
+        public void JumpTouch(bool buttonDown)
+        {
+            if (jumpState == JumpState.Grounded && buttonDown)
+                jumpState = JumpState.PrepareToJump;
+            else if (!buttonDown)
+            {
+                stopJump = true;
+                Schedule<PlayerStopJump>().player = this;
+            }
         }
 
         void UpdateJumpState()

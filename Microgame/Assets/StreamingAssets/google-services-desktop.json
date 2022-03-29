@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "878124355620",
+    "project_id": "my-firebase-project-a8c99",
+    "storage_bucket": "my-firebase-project-a8c99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878124355620:android:bf7b9e1b8df7da53b148b1",
+        "android_client_info": {
+          "package_name": "com.azerion.microgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878124355620-2fhhqgdgaei8b3fdovfd5osa7tjt3mbu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZHbdcQh3AdfOYxXxv1Mgzz3cReSW6Xqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878124355620-2fhhqgdgaei8b3fdovfd5osa7tjt3mbu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "878124355620-4n95sm814nb1iduc0hcp95refi7tb0os.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.azerion.microgame"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
