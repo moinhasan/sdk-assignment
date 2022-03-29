@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "HT69K0205833",
         "name": "com.azerion.microgame",
-        "processId": 19483,
+        "processId": 22160,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -30,6 +30,12 @@
             "deviceId": "HT69K0205833",
             "name": "com.azerion.microgame",
             "processId": 19483,
+            "exited": false
+        },
+        {
+            "deviceId": "HT69K0205833",
+            "name": "com.azerion.microgame",
+            "processId": 22160,
             "exited": false
         }
     ],
