@@ -6,6 +6,7 @@ public class DialogManager : MonoBehaviour
 {
 	private static readonly string MANAGER_PREFAB = "UI/DialogManager";
 
+	private Canvas dialogCanvas = null;
 	public GameObject prefabMarkNetworkAccess = null;
 	public GameObject prefabDialog = null;
 
@@ -48,11 +49,25 @@ public class DialogManager : MonoBehaviour
 		showNetworkAccess = Instantiate(prefabMarkNetworkAccess) as GameObject;
 		showNetworkAccess.transform.SetParent(this.transform, false);
 		showNetworkAccess.SetActive(false);
+		dialogCanvas = this.GetComponent<Canvas>();
 	}
 
-	#region Create and show dialog
-	//----------------------------------
-	public SystemDialog CallSystemDialog(string messageTitle, string message, SystemDialog.AppearanceType appearanceType, Dialog.Callback callback, float _wait = 0.0f)
+	// last minute bug, don't have enough time to handle it properly.
+    private void Update()
+    {
+        if (!IsExistDialog())
+        {
+			dialogCanvas.enabled = false;
+        }
+        else
+        {
+			dialogCanvas.enabled = true;
+		}
+    }
+
+    #region Create and show dialog
+    //----------------------------------
+    public SystemDialog CallSystemDialog(string messageTitle, string message, SystemDialog.AppearanceType appearanceType, Dialog.Callback callback, float _wait = 0.0f)
 	{
 		if (IsExistDialog())
 		{

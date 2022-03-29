@@ -56,7 +56,7 @@ namespace Platformer.Mechanics
         {
             if (controlEnabled)
             {
-#if !UNITY_EDITOR && UNITY_ANDROID
+#if UNITY_EDITOR && !UNITY_ANDROID
                 touchControlEnabled = false;
                 Move(Input.GetAxis("Horizontal"));
                 Jump(Input.GetButtonDown("Jump"), Input.GetButtonUp("Jump"));

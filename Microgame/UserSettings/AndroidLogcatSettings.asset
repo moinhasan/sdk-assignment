@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "HT69K0205833",
     "m_SelectedPackage": {
         "deviceId": "HT69K0205833",
-        "name": "com.Azerion.Microgame",
-        "processId": 32257,
+        "name": "com.azerion.microgame",
+        "processId": 19483,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,24 @@
             "deviceId": "HT69K0205833",
             "name": "com.Azerion.Microgame",
             "processId": 32257,
+            "exited": false
+        },
+        {
+            "deviceId": "HT69K0205833",
+            "name": "com.azerion.microgame",
+            "processId": 14143,
+            "exited": false
+        },
+        {
+            "deviceId": "HT69K0205833",
+            "name": "com.azerion.microgame",
+            "processId": 18467,
+            "exited": false
+        },
+        {
+            "deviceId": "HT69K0205833",
+            "name": "com.azerion.microgame",
+            "processId": 19483,
             "exited": false
         }
     ],
