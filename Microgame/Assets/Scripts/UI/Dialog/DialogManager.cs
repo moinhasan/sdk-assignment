@@ -9,7 +9,7 @@ public class DialogManager : MonoBehaviour
 	public GameObject prefabMarkNetworkAccess = null;
 	public GameObject prefabDialog = null;
 
-	private GameObject objectMarkNetworkAccess = null;
+	private GameObject showNetworkAccess = null;
 	private GameObject objectDialog = null;
 	private Dialog.Callback callbackDialog = null;
 
@@ -45,9 +45,9 @@ public class DialogManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		objectMarkNetworkAccess = Instantiate(prefabMarkNetworkAccess) as GameObject;
-		objectMarkNetworkAccess.transform.SetParent(this.transform);
-		objectMarkNetworkAccess.SetActive(false);
+		showNetworkAccess = Instantiate(prefabMarkNetworkAccess) as GameObject;
+		showNetworkAccess.transform.SetParent(this.transform, false);
+		showNetworkAccess.SetActive(false);
 	}
 
 	#region Create and show dialog
@@ -116,11 +116,11 @@ public class DialogManager : MonoBehaviour
 
 	#region Manage network access dialog
 	//----------------------------------
-	public void SetObjectMarkNetworkAccessActive(bool active)
+	public void ShowNetworkAccessActive(bool active)
 	{
-		if (objectMarkNetworkAccess != null)
+		if (showNetworkAccess != null)
 		{
-			objectMarkNetworkAccess.SetActive(active);
+			showNetworkAccess.SetActive(active);
 		}
 	}
 	#endregion
@@ -129,7 +129,7 @@ public class DialogManager : MonoBehaviour
 	//---------------------------------
 	public bool IsExistDialog()
 	{
-		return (objectDialog != null || objectMarkNetworkAccess.activeInHierarchy);
+		return (objectDialog != null || showNetworkAccess.activeInHierarchy);
 	}
 
 	//private bool IsExistDialog()
@@ -143,7 +143,7 @@ public class DialogManager : MonoBehaviour
 	{
 		if (instance == this)
 		{
-			Destroy(objectMarkNetworkAccess);
+			Destroy(showNetworkAccess);
 			if (objectDialog != null)
 			{
 				Destroy(objectDialog);

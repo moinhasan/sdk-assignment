@@ -1,0 +1,17 @@
+{
+  "name": "com.azerion.apiclient",
+  "displayName": "Micro API Client",
+  "version": "1.0.0",
+  "description": "Http client for unity",
+  "keywords": [
+    "http",
+    "API",
+    "Web"
+  ],
+  "author": {
+    "name": "Moin",
+    "email": "email@moinhasan.com",
+    "url": "https://www.unity3d.com"
+  },
+  "type": "library"
+}
